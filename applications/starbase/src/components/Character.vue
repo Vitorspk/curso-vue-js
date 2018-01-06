@@ -22,13 +22,13 @@ export default {
   },
   methods: {
     fetchCharacter(id) {
-      fetch(`https://swapi.co/api/people/${id}`, {
+      fetch(`http://swapi.co/api/people/${id}`, {
         method: 'GET'
       })
         .then(response => response.json())
         .then(json => this.character = json)
     },
-    switchCharacter(){
+    switchCharacter() {
       let random_id = Math.floor(Math.random() * 83) + 1
       this.fetchCharacter(random_id)
     }
@@ -38,4 +38,3 @@ export default {
   }
 }
 </script>
-
