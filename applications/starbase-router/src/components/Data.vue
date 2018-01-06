@@ -1,11 +1,12 @@
 <template>
-  <div class="col-md-12">
-    <Item
+<div class="col-md-12">
+  <Item
     v-for="(item, index) in items"
     key="index"
-    :item="item"
-    />
-  </div>
+    :passed-item="item"
+    :type="type"
+  />
+</div>
 </template>
 
 <script>
@@ -24,6 +25,7 @@ export default {
   methods: {
     fetchItems() {
       this.items = []
+      this.type = this.$route.params.type
       let initial_ids = [1, 13, 14]
 
       for (let i in initial_ids) {
@@ -32,8 +34,8 @@ export default {
         fetch(`https://swapi.co/api/${this.type}/${id}`, {
           method: 'GET'
         })
-        .then(response => response.json())
-        .then(json => this.items.push(json))
+          .then(response => response.json())
+          .then(json => this.items.push(json))
       }
     }
   },
@@ -45,4 +47,3 @@ export default {
   }
 }
 </script>
-
